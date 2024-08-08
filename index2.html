@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="profit calculator">
+    <link rel="stylesheet" href="main.css" type="text/css">
+    <title>Profit Calculator</title>
+</head>
+<body>
+    <header>
+    <h1>Bitcoin Profit Calculator</h1>
+    </header>
+    <main>
+        <article id="form">
+            <section>
+                <form>
+                    <p>
+                        <label for="buy_price">Buy Price(USD)</label>
+                        <br>
+                        <input type="number" name="buy_price" id="buy_price">
+                    </p>
+                    <p>
+                        <label for="sell_price">Sell Price(USD)</label>
+                        <br>
+                        <input type="number" name="sell_price" id="sell_price">
+                    </p>
+                    <p>
+                        <label for="buy_amount">Buy Amount</label>
+                        <br>
+                        <input type="number" name="buy_amount" id="buy_amount">
+                    </p>
+                    <button type="button" onclick="profit_calculator()">Calculate</button>
+                    <p>
+                        <label for="profit">Profit(USD)</label>
+                        <br>
+                        <input type="number" name="profit" id="profit">
+                    </p>
+                </form>
+                <p id="profit_percent"></p>
+            </section>
+        </article>
+    </main>
+</body>
+<script>
+    function profit_calculator()
+    {
+        const buy_price=document.getElementById("buy_price").value;
+        const sell_price=document.getElementById("sell_price").value;
+        const buy_amount=document.getElementById("buy_amount").value;
+        var profit_percentage=(sell_price-buy_price)/buy_price*100;
+        var profit_per = (profit_percentage/100)*buy_price;
+        var profit = profit_per*buy_amount;
+        document.getElementById("profit").value=profit;
+        document.getElementById("profit_percent").innerText=profit_percentage+"%";
+    }
+</script>
+</html>
